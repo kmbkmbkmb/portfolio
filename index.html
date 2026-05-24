@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keroles Mousa — Google Ads & Creative Specialist</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #090c14;
+      --bg2: #0f1423;
+      --bg3: #141928;
+      --card: #161d30;
+      --card2: #1b2235;
+      --border: rgba(255,255,255,0.07);
+      --accent: #4f8eff;
+      --accent2: #7b5cff;
+      --accent3: #00d4aa;
+      --text: #e8ecf5;
+      --text-muted: #6b7a9a;
+      --text-dim: #9aa3ba;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Typography ── */
+    h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.1rem 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(9,12,20,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 1.1rem; font-weight: 800; letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-size: 0.875rem; color: var(--text-dim); font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding: 6rem 2rem 4rem;
+    }
+    .hero-glow {
+      position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 700px;
+      background: radial-gradient(ellipse at center, rgba(79,142,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-glow2 {
+      position: absolute; bottom: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(ellipse at center, rgba(123,92,255,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .grid-lines {
+      position: absolute; inset: 0; opacity: 0.03;
+      background-image:
+        linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 900px; text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(79,142,255,0.1); border: 1px solid rgba(79,142,255,0.25);
+      color: var(--accent); font-size: 0.8rem; font-weight: 600;
+      padding: 0.4rem 1rem; border-radius: 100px;
+      margin-bottom: 2rem; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .hero-badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+    }
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.2rem; color: var(--text-dim);
+      max-width: 580px; margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-ctas {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; padding: 0.85rem 2rem; border-radius: 10px;
+      font-weight: 600; font-size: 0.95rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(79,142,255,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(79,142,255,0.45); }
+    .btn-ghost {
+      background: transparent; color: var(--text-dim);
+      border: 1px solid var(--border); padding: 0.85rem 2rem;
+      border-radius: 10px; font-weight: 600; font-size: 0.95rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+    .hero-stats {
+      display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;
+      margin-top: 4rem; padding-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-size: 2rem; font-weight: 800; letter-spacing: -0.04em;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* ── Section Base ── */
+    section { padding: 7rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 1rem; color: var(--text);
+    }
+    .section-desc {
+      font-size: 1.05rem; color: var(--text-dim);
+      max-width: 560px; line-height: 1.7;
+    }
+
+    /* ── About ── */
+    #about { background: var(--bg2); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+      margin-top: 3rem;
+    }
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .about-text p { color: var(--text-dim); line-height: 1.8; margin-bottom: 1.2rem; font-size: 1.05rem; }
+    .about-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .about-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.4rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .about-card:hover { border-color: rgba(79,142,255,0.3); transform: translateY(-3px); }
+    .about-card-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
+    .about-card-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .about-card-desc { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* ── Services ── */
+    #services { background: var(--bg); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .service-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 18px; padding: 2rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover {
+      border-color: rgba(79,142,255,0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(79,142,255,0.15), rgba(123,92,255,0.15));
+      border: 1px solid rgba(79,142,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.2rem;
+    }
+    .service-title { font-size: 1.15rem; margin-bottom: 0.75rem; }
+    .service-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 1.2rem; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      font-size: 0.72rem; font-weight: 600; padding: 0.3rem 0.7rem;
+      border-radius: 6px; background: rgba(79,142,255,0.08);
+      border: 1px solid rgba(79,142,255,0.15); color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Case Study ── */
+    #case-study { background: var(--bg2); }
+    .cs-wrapper {
+      margin-top: 3rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 24px; overflow: hidden;
+    }
+    .cs-header {
+      padding: 3rem; border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(79,142,255,0.04), rgba(123,92,255,0.04));
+      display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;
+    }
+    .cs-logo-block {
+      width: 64px; height: 64px; border-radius: 16px;
+      background: linear-gradient(135deg, #1a6fff, #7b5cff);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(79,142,255,0.3);
+    }
+    .cs-meta { flex: 1; }
+    .cs-client-name { font-size: 1.8rem; margin-bottom: 0.4rem; }
+    .cs-tagline { color: var(--text-dim); font-size: 1rem; margin-bottom: 1rem; }
+    .cs-pills { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .pill {
+      font-size: 0.72rem; font-weight: 700; padding: 0.3rem 0.8rem;
+      border-radius: 100px; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .pill-blue { background: rgba(79,142,255,0.12); color: var(--accent); border: 1px solid rgba(79,142,255,0.25); }
+    .pill-purple { background: rgba(123,92,255,0.12); color: var(--accent2); border: 1px solid rgba(123,92,255,0.25); }
+    .pill-green { background: rgba(0,212,170,0.1); color: var(--accent3); border: 1px solid rgba(0,212,170,0.2); }
+
+    .cs-body { padding: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    @media (max-width: 768px) { .cs-body { grid-template-columns: 1fr; gap: 2rem; } .cs-header { flex-direction: column; } }
+
+    .cs-section-label {
+      font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.8rem;
+    }
+    .cs-section-title { font-size: 1.1rem; margin-bottom: 0.8rem; }
+    .cs-text { font-size: 0.92rem; color: var(--text-dim); line-height: 1.75; }
+
+    .cs-results {
+      grid-column: 1 / -1; border-top: 1px solid var(--border); padding-top: 2.5rem;
+    }
+    .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+    .result-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem; text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .result-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    }
+    .result-card.up::after { background: linear-gradient(90deg, var(--accent3), transparent); }
+    .result-card.down::after { background: linear-gradient(90deg, var(--accent), transparent); }
+    .result-card:hover { border-color: rgba(79,142,255,0.3); transform: translateY(-3px); }
+    .result-value {
+      font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 0.3rem;
+    }
+    .result-card.up .result-value { color: var(--accent3); }
+    .result-card.down .result-value { color: var(--accent); }
+    .result-label { font-size: 0.78rem; color: var(--text-muted); }
+    .result-change {
+      font-size: 0.72rem; font-weight: 700; margin-top: 0.4rem;
+      display: inline-block; padding: 0.2rem 0.5rem; border-radius: 6px;
+    }
+    .result-card.up .result-change { background: rgba(0,212,170,0.1); color: var(--accent3); }
+    .result-card.down .result-change { background: rgba(79,142,255,0.1); color: var(--accent); }
+
+    .cs-strategy { grid-column: 1 / -1; border-top: 1px solid var(--border); padding-top: 2.5rem; }
+    .strategy-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+    .step {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.4rem;
+    }
+    .step-num {
+      font-size: 0.7rem; font-weight: 800; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;
+    }
+    .step-title { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .step-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+    .cs-creative { grid-column: 1 / -1; border-top: 1px solid var(--border); padding-top: 2.5rem; }
+    .creative-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+    .creative-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+    }
+    .creative-preview {
+      height: 140px; display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; position: relative; overflow: hidden;
+    }
+    .creative-preview.blue { background: linear-gradient(135deg, rgba(79,142,255,0.15), rgba(123,92,255,0.15)); }
+    .creative-preview.green { background: linear-gradient(135deg, rgba(0,212,170,0.1), rgba(79,142,255,0.1)); }
+    .creative-preview.purple { background: linear-gradient(135deg, rgba(123,92,255,0.15), rgba(200,100,255,0.1)); }
+    .creative-label { padding: 1rem 1.2rem; }
+    .creative-label-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .creative-label-sub { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* ── Skills ── */
+    #skills { background: var(--bg); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .skill-group {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 18px; padding: 1.8rem;
+    }
+    .skill-group-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--text); }
+    .skill-item { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .skill-top { display: flex; justify-content: space-between; align-items: center; }
+    .skill-name { font-size: 0.85rem; color: var(--text-dim); }
+    .skill-pct { font-size: 0.78rem; font-weight: 700; color: var(--accent); }
+    .skill-bar { height: 4px; background: var(--bg3); border-radius: 4px; overflow: hidden; }
+    .skill-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+
+    /* ── Testimonial ── */
+    #testimonial { background: var(--bg2); }
+    .testimonial-inner {
+      max-width: 800px; margin: 3rem auto 0;
+      background: var(--card); border: 1px solid rgba(79,142,255,0.2);
+      border-radius: 24px; padding: 3rem;
+      position: relative;
+    }
+    .quote-icon {
+      position: absolute; top: -20px; left: 3rem;
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 8px 24px rgba(79,142,255,0.3);
+    }
+    .quote-text {
+      font-size: 1.15rem; line-height: 1.75; color: var(--text);
+      font-style: italic; margin-bottom: 1.5rem;
+    }
+    .quote-author { display: flex; align-items: center; gap: 1rem; }
+    .quote-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem; color: #fff; flex-shrink: 0;
+    }
+    .quote-name { font-weight: 700; font-size: 0.95rem; }
+    .quote-role { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* ── Contact ── */
+    #contact { background: var(--bg); }
+    .contact-inner {
+      max-width: 700px; margin: 3rem auto 0; text-align: center;
+    }
+    .contact-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 24px; padding: 3.5rem;
+      position: relative; overflow: hidden;
+    }
+    .contact-glow {
+      position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+      width: 400px; height: 300px;
+      background: radial-gradient(ellipse, rgba(79,142,255,0.1), transparent 70%);
+      pointer-events: none;
+    }
+    .contact-card h3 { font-size: 1.6rem; margin-bottom: 0.8rem; position: relative; }
+    .contact-card p { color: var(--text-dim); margin-bottom: 2rem; position: relative; }
+    .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.8rem 1.4rem; border-radius: 10px;
+      font-size: 0.9rem; font-weight: 600;
+      border: 1px solid var(--border); color: var(--text-dim);
+      transition: all 0.2s; background: var(--bg3);
+    }
+    .contact-link:hover {
+      border-color: rgba(79,142,255,0.4); color: var(--text);
+      background: rgba(79,142,255,0.05); transform: translateY(-2px);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2rem; text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted); font-size: 0.82rem;
+    }
+
+    /* ── Scroll Animations ── */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Timeline ── */
+    .timeline { margin-top: 1.5rem; position: relative; padding-left: 1.5rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 6px; bottom: 6px;
+      width: 2px; background: linear-gradient(180deg, var(--accent), var(--accent2), transparent);
+      border-radius: 2px;
+    }
+    .timeline-item { position: relative; margin-bottom: 1.4rem; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -1.5rem; top: 6px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent); border: 2px solid var(--bg2);
+      transform: translateX(-3px);
+    }
+    .timeline-item-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .timeline-item-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <div class="nav-logo">KM</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#case-study">Work</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Available for projects</div>
+    <h1 class="hero-title">
+      Keroles Mousa<br/>
+      <span>Ads & Creative</span><br/>Specialist
+    </h1>
+    <p class="hero-sub">
+      I help brands grow through high-performance Google Ads campaigns and compelling creative — images, videos, and designs that convert.
+    </p>
+    <div class="hero-ctas">
+      <a href="#case-study" class="btn-primary">View Case Studies</a>
+      <a href="#contact" class="btn-ghost">Let's Talk</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">$90K+</div>
+        <div class="stat-label">Ad Spend Managed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">7+</div>
+        <div class="stat-label">Active Accounts</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">$23.19</div>
+        <div class="stat-label">Best CPA Achieved (Ovasave)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Markets (UAE + Canada)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── About ── -->
+<section id="about">
+  <div class="section-inner">
+    <p class="section-tag fade-in">About Me</p>
+    <h2 class="section-title fade-in">The person behind<br/>the campaigns</h2>
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <p>I'm an Egyptian digital marketer based in Kraków, Poland — obsessed with two things: making Google Ads campaigns that actually deliver, and creating visuals that stop the scroll.</p>
+        <p>I specialize in Performance Max (PMax) campaigns, paid social, and creative production for brands across healthcare, e-commerce, and consumer goods. My work blends data-driven strategy with strong creative execution — because both matter.</p>
+        <p>Currently managing campaigns for clients in Canada (virtual healthcare), UAE (fertility e-commerce), and the Middle East — with a focus on measurable results and clear communication.</p>
+      </div>
+      <div class="about-cards">
+        <div class="about-card">
+          <div class="about-card-icon">🎯</div>
+          <div class="about-card-title">PMax Campaigns</div>
+          <div class="about-card-desc">Full campaign setup, asset production & continuous optimization</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🎨</div>
+          <div class="about-card-title">Creative Design</div>
+          <div class="about-card-desc">Ad creatives, social content, branded visuals & video</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">📊</div>
+          <div class="about-card-title">Analytics & Reporting</div>
+          <div class="about-card-desc">GA4, weekly decks, and data storytelling for stakeholders</div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">🌍</div>
+          <div class="about-card-title">Cross-Market Experience</div>
+          <div class="about-card-desc">Canada, UAE, Egypt, Poland — multi-timezone, multilingual</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Services ── -->
+<section id="services">
+  <div class="section-inner">
+    <p class="section-tag fade-in">What I Do</p>
+    <h2 class="section-title fade-in">Services</h2>
+    <p class="section-desc fade-in">From strategy to execution — I handle the full loop, so you get results, not just reports.</p>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">📈</div>
+        <div class="service-title">Google Ads Management</div>
+        <div class="service-desc">Full-funnel campaign management with a focus on Performance Max. From campaign architecture and bidding strategy to weekly optimization and reporting.</div>
+        <div class="service-tags">
+          <span class="tag">PMax</span>
+          <span class="tag">Search</span>
+          <span class="tag">Display</span>
+          <span class="tag">Smart Bidding</span>
+          <span class="tag">GA4</span>
+        </div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🎨</div>
+        <div class="service-title">Ad Creative & Design</div>
+        <div class="service-desc">High-converting static and animated creatives for paid channels. I design for performance — every visual is built to drive clicks and conversions, not just look good.</div>
+        <div class="service-tags">
+          <span class="tag">Static Ads</span>
+          <span class="tag">Video Ads</span>
+          <span class="tag">Social Creatives</span>
+          <span class="tag">Canva</span>
+        </div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">📱</div>
+        <div class="service-title">Meta Ads (Facebook & Instagram)</div>
+        <div class="service-desc">Paid social campaigns for brand awareness, lead gen, and conversions — including organic content scheduling and community management for health & lifestyle brands.</div>
+        <div class="service-tags">
+          <span class="tag">Facebook Ads</span>
+          <span class="tag">Instagram</span>
+          <span class="tag">Lead Gen</span>
+          <span class="tag">Retargeting</span>
+        </div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🛒</div>
+        <div class="service-title">Marketplace Advertising</div>
+        <div class="service-desc">Amazon.ae and noon UAE sponsored product campaigns — inventory monitoring, PLA setup, deal participation, and seller account health for supplement and wellness brands.</div>
+        <div class="service-tags">
+          <span class="tag">Amazon.ae</span>
+          <span class="tag">noon UAE</span>
+          <span class="tag">Sponsored Products</span>
+          <span class="tag">ACOS Optimization</span>
+        </div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🎬</div>
+        <div class="service-title">Video Production & Editing</div>
+        <div class="service-desc">Short-form video content for ads and social — scripting, editing, motion graphics, and platform-optimized formats (Reels, YouTube Shorts, in-stream ads).</div>
+        <div class="service-tags">
+          <span class="tag">Reels</span>
+          <span class="tag">YouTube Ads</span>
+          <span class="tag">Motion Graphics</span>
+          <span class="tag">Short-form</span>
+        </div>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">📊</div>
+        <div class="service-title">Analytics & Reporting</div>
+        <div class="service-desc">Weekly performance decks, GA4 setup, UTM strategy, and actionable insights. I translate raw data into clear decisions — for clients who want to understand what's working and why.</div>
+        <div class="service-tags">
+          <span class="tag">GA4</span>
+          <span class="tag">UTM Tracking</span>
+          <span class="tag">Weekly Decks</span>
+          <span class="tag">Conversion Tracking</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Case Study: Ogaei ── -->
+<section id="case-study">
+  <div class="section-inner">
+    <p class="section-tag fade-in">Case Study</p>
+    <h2 class="section-title fade-in">Real work. Real results.</h2>
+    <p class="section-desc fade-in">A deep dive into how I helped Ogaei — a Canadian virtual healthcare clinic — grow conversions through Google Ads PMax.</p>
+
+    <div class="cs-wrapper fade-in">
+      <!-- Header -->
+      <div class="cs-header">
+        <div class="cs-logo-block">🏥</div>
+        <div class="cs-meta">
+          <div class="cs-client-name">Ogaei</div>
+          <div class="cs-tagline">Ontario Virtual Healthcare Clinic — Canada's telehealth platform connecting patients with licensed doctors online</div>
+          <div class="cs-pills">
+            <span class="pill pill-blue">Google Ads</span>
+            <span class="pill pill-purple">Performance Max</span>
+            <span class="pill pill-green">Healthcare</span>
+            <span class="pill pill-blue">Creative Production</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="cs-body">
+        <!-- Challenge -->
+        <div>
+          <div class="cs-section-label">The Challenge</div>
+          <div class="cs-section-title">Breaking into a competitive, regulated market</div>
+          <div class="cs-text">
+            Healthcare advertising in Canada is one of the toughest verticals — heavily regulated, high CPCs, and audiences that require trust before converting. Ogaei needed to drive online consultation bookings efficiently, without burning budget on unqualified clicks.
+          </div>
+          <div class="timeline" style="margin-top:1.5rem;">
+            <div class="timeline-item">
+              <div class="timeline-item-title">CPA Spike to $133.83</div>
+              <div class="timeline-item-desc">August 2025: after conversion tracking was corrected, real CPA was exposed — $133.83/conv with only 25 conversions that month</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item-title">Conversion Tracking Misconfiguration</div>
+              <div class="timeline-item-desc">Early months (Jun–Jul 2025) showed inflated conversion counts — all GA4 events were being counted, not just Lead_Finish_Registration</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item-title">Low CTR at 2.11%</div>
+              <div class="timeline-item-desc">July 2025: 129K impressions but only 2,275 clicks — assets were not resonating, low ad relevance signals</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item-title">Meta Conversion Block</div>
+              <div class="timeline-item-desc">Meta's healthcare policy blocked pixel-based conversion tracking — Google Ads PMax became the sole performance channel requiring full optimization</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Strategy -->
+        <div>
+          <div class="cs-section-label">My Role</div>
+          <div class="cs-section-title">End-to-end campaign ownership</div>
+          <div class="cs-text">
+            As the dedicated Google Ads manager, I took full ownership of campaign strategy, creative production, tracking setup, and weekly reporting. I was also responsible for the Meta presence — organic content, ad creative, and page management.
+          </div>
+          <div class="timeline" style="margin-top:1.5rem;">
+            <div class="timeline-item">
+              <div class="timeline-item-title">GA4 + Google Ads Tracking Audit</div>
+              <div class="timeline-item-desc">Rebuilt conversion tracking end-to-end — booking confirmations, form submits, and phone call events</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item-title">PMax Campaign Architecture</div>
+              <div class="timeline-item-desc">Built segmented asset groups by service type (general care, mental health, prescriptions) with custom audience signals</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item-title">Creative Production</div>
+              <div class="timeline-item-desc">Produced 20+ branded ad assets — static images, lifestyle photography, headline variants, and responsive display ads</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item-title">Weekly Reporting Cadence</div>
+              <div class="timeline-item-desc">Delivered branded weekly performance decks with actionable recommendations and trend analysis</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Strategy Steps -->
+        <div class="cs-strategy">
+          <div class="cs-section-label">Strategy Breakdown</div>
+          <div class="cs-section-title">How I approached the PMax build</div>
+          <div class="strategy-steps">
+            <div class="step">
+              <div class="step-num">Step 01</div>
+              <div class="step-title">Tracking Foundation</div>
+              <div class="step-desc">Fixed GA4 → Google Ads linking. Set primary conversion: booking confirmation page. Secondary: phone calls + form submissions. Verified via Tag Assistant.</div>
+            </div>
+            <div class="step">
+              <div class="step-num">Step 02</div>
+              <div class="step-title">Audience Signals</div>
+              <div class="step-desc">Built custom intent audiences targeting Ontario-based users searching for "virtual doctor", "online prescription", and healthcare condition keywords. Layered with remarketing lists.</div>
+            </div>
+            <div class="step">
+              <div class="step-num">Step 03</div>
+              <div class="step-title">Asset Group Segmentation</div>
+              <div class="step-desc">Split into 3 asset groups: General Care, Mental Health, and Chronic Conditions. Each with tailored headlines, descriptions, and creatives — no one-size-fits-all.</div>
+            </div>
+            <div class="step">
+              <div class="step-num">Step 04</div>
+              <div class="step-title">Creative Testing</div>
+              <div class="step-desc">Launched with 5 headline variants per group. Killed underperformers weekly. Tested lifestyle imagery vs. clinical look — lifestyle won by 2.4x CTR.</div>
+            </div>
+            <div class="step">
+              <div class="step-num">Step 05</div>
+              <div class="step-title">Bid Strategy Tuning</div>
+              <div class="step-desc">Started on Maximize Conversions, then shifted to Target CPA once we had 30+ conversions/month. Adjusted target incrementally to push volume without sacrificing quality.</div>
+            </div>
+            <div class="step">
+              <div class="step-num">Step 06</div>
+              <div class="step-title">Weekly Optimization Loop</div>
+              <div class="step-desc">Monday audit: asset ratings, search themes, budget pacing. Midweek check: conversion anomalies. Friday report delivered to client with next week's plan.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Static Performance Table -->
+        <div class="cs-strategy">
+          <div class="cs-section-label">Real Data — Verified from Google Ads API · Account #2298642399</div>
+          <div class="cs-section-title">Monthly Performance (Aug 2025 – Apr 2026)</div>
+          <div style="margin-top:1.5rem; overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.82rem;">
+              <thead>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <th style="padding:0.6rem 0.8rem; text-align:left; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.06em; font-size:0.7rem;">Month</th>
+                  <th style="padding:0.6rem 0.8rem; text-align:right; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.06em; font-size:0.7rem;">Conversions</th>
+                  <th style="padding:0.6rem 0.8rem; text-align:right; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.06em; font-size:0.7rem;">CPA</th>
+                  <th style="padding:0.6rem 0.8rem; text-align:right; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.06em; font-size:0.7rem;">CTR</th>
+                  <th style="padding:0.6rem 0.8rem; text-align:right; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.06em; font-size:0.7rem;">Spend</th>
+                  <th style="padding:0.6rem 0.8rem; text-align:left; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.06em; font-size:0.7rem;">CPA Bar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border); background:rgba(255,80,80,0.04);">
+                  <td style="padding:0.65rem 0.8rem; color:var(--text-dim);">Aug 2025</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text);">25</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:#ff6b6b; font-weight:700;">$133.83</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text-dim);">2.11%</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text-dim);">$3,345</td>
+                  <td style="padding:0.65rem 0.8rem;"><div style="height:6px; border-radius:3px; background:rgba(255,107,107,0.3); width:100%; position:relative;"><div style="height:100%; border-radius:3px; background:#ff6b6b; width:100%;"></div></div></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.65rem 0.8rem; color:var(--text-dim);">Sep 2025</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text);">68</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:#ffa94d; font-weight:700;">$65.95</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text-dim);">2.87%</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text-dim);">$4,484</td>
+                  <td style="padding:0.65rem 0.8rem;"><div style="height:6px; border-radius:3px; background:rgba(255,107,107,0.15); width:100%;"><div style="height:100%; border-radius:3px; background:#ffa94d; width:49%;"></div></div></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.65rem 0.8rem; color:var(--text-dim);">Oct 2025</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text); font-weight:700;">157 ★</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:#69db7c; font-weight:700;">$49.08</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text-dim);">3.79%</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text-dim);">$7,733</td>
+                  <td style="padding:0.65rem 0.8rem;"><div style="height:6px; border-radius:3px; background:rgba(255,107,107,0.15); width:100%;"><div style="height:100%; border-radius:3px; background:#69db7c; width:37%;"></div></div></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.65rem 0.8rem; color:var(--text-dim);">Nov 2025</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text);">144</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:#69db7c; font-weight:700;">$42.08</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text-dim);">4.28%</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text-dim);">$6,079</td>
+                  <td style="padding:0.65rem 0.8rem;"><div style="height:6px; border-radius:3px; background:rgba(255,107,107,0.15); width:100%;"><div style="height:100%; border-radius:3px; background:#69db7c; width:31%;"></div></div></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:0.65rem 0.8rem; color:var(--text-dim);">Feb 2026</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text);">153</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--accent3); font-weight:700;">$41.19 ★</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--accent3); font-weight:700;">5.50%</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text-dim);">$6,308</td>
+                  <td style="padding:0.65rem 0.8rem;"><div style="height:6px; border-radius:3px; background:rgba(255,107,107,0.15); width:100%;"><div style="height:100%; border-radius:3px; background:var(--accent3); width:31%;"></div></div></td>
+                </tr>
+                <tr>
+                  <td style="padding:0.65rem 0.8rem; color:var(--text-dim);">Apr 2026</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text);">150</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:#ffa94d; font-weight:700;">$60.53</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text-dim);">5.11%</td>
+                  <td style="padding:0.65rem 0.8rem; text-align:right; color:var(--text-dim);">$9,080</td>
+                  <td style="padding:0.65rem 0.8rem;"><div style="height:6px; border-radius:3px; background:rgba(255,107,107,0.15); width:100%;"><div style="height:100%; border-radius:3px; background:#ffa94d; width:45%;"></div></div></td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="font-size:0.72rem; color:var(--text-muted); margin-top:0.8rem;">★ Peak month &nbsp;·&nbsp; CPA bar scaled to worst month ($133.83 = 100%) — lower is better</p>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="cs-results">
+          <div class="cs-section-label">Results — Verified from Google Ads Account #2298642399</div>
+          <div class="cs-section-title">10 months of real campaign data</div>
+          <div class="results-grid">
+            <div class="result-card down">
+              <div class="result-value">$41–60</div>
+              <div class="result-label">Stabilized CPA Range</div>
+              <div class="result-change">↓ from $133.83 at worst point (Aug 2025)</div>
+            </div>
+            <div class="result-card up">
+              <div class="result-value">+160%</div>
+              <div class="result-label">Click-Through Rate</div>
+              <div class="result-change">2.11% → 5.50% — consistent creative improvement</div>
+            </div>
+            <div class="result-card up">
+              <div class="result-value">150+</div>
+              <div class="result-label">Consistent Monthly Conversions</div>
+              <div class="result-change">↑ from 25/month — sustained at 144–157 range</div>
+            </div>
+            <div class="result-card up">
+              <div class="result-value">$61K+</div>
+              <div class="result-label">Total Spend Managed</div>
+              <div class="result-change">10 months active — $300/day campaign budget</div>
+            </div>
+            <div class="result-card up">
+              <div class="result-value">5.50%</div>
+              <div class="result-label">Peak CTR Achieved</div>
+              <div class="result-change">↑ Feb 2026 — highest in campaign history</div>
+            </div>
+            <div class="result-card down">
+              <div class="result-value">$41.19</div>
+              <div class="result-label">Best CPA on Record</div>
+              <div class="result-change">↓ Feb 2026 — verified from Google Ads API</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Creative Showcase -->
+        <div class="cs-creative">
+          <div class="cs-section-label">Creative Production</div>
+          <div class="cs-section-title">Assets produced for the campaign</div>
+          <div class="creative-grid">
+            <div class="creative-card">
+              <div class="creative-preview blue">🖼️</div>
+              <div class="creative-label">
+                <div class="creative-label-title">Responsive Display Ads</div>
+                <div class="creative-label-sub">20+ image assets across 5 formats — 1200×628, 1:1, vertical</div>
+              </div>
+            </div>
+            <div class="creative-card">
+              <div class="creative-preview green">🎬</div>
+              <div class="creative-label">
+                <div class="creative-label-title">YouTube In-Stream Video</div>
+                <div class="creative-label-sub">15s & 30s branded video ads — lifestyle + product benefit focus</div>
+              </div>
+            </div>
+            <div class="creative-card">
+              <div class="creative-preview purple">✍️</div>
+              <div class="creative-label">
+                <div class="creative-label-title">Ad Copy Variants</div>
+                <div class="creative-label-sub">15 headline variants + 4 description sets, A/B tested weekly</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /cs-body -->
+    </div><!-- /cs-wrapper -->
+  </div>
+</section>
+
+<!-- ── Case Study 2: Ovasave ── -->
+<section id="case-study-ovasave" style="background: var(--bg); padding-top: 0; padding-bottom: 7rem;">
+  <div class="section-inner">
+
+    <div class="cs-wrapper fade-in" style="margin-top: 0;">
+      <!-- Header -->
+      <div class="cs-header" style="background: linear-gradient(135deg, rgba(0,212,170,0.04), rgba(123,92,255,0.04));">
+        <div class="cs-logo-block" style="background: linear-gradient(135deg, #00b894, #7b5cff);">🧬</div>
+        <div class="cs-meta">
+          <div class="cs-client-name">Ovasave</div>
+          <div class="cs-tagline">UAE Women's Fertility & Hormonal Health Brand — supplements and at-home hormone test kits sold across UAE and Saudi Arabia</div>
+          <div class="cs-pills">
+            <span class="pill pill-green">Google Ads</span>
+            <span class="pill pill-purple">PMax + Search + Shopping</span>
+            <span class="pill pill-blue">UAE · KSA</span>
+            <span class="pill pill-green">EN + AR</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="cs-body">
+        <!-- Challenge -->
+        <div>
+          <div class="cs-section-label">The Challenge</div>
+          <div class="cs-section-title">Two markets, two languages, two product lines</div>
+          <div class="cs-text">
+            Ovasave operates across UAE and Saudi Arabia, selling both supplements (Amazon.ae only) and at-home fertility/hormone test kits (noon + direct). The challenge: run profitable campaigns in a sensitive health vertical across two GCC markets simultaneously — in both English and Arabic — with distinct audiences, different purchase intent signals, and no unified tracking baseline.
+          </div>
+          <div class="timeline" style="margin-top:1.5rem;">
+            <div class="timeline-item">
+              <div class="timeline-item-title">Multi-Market Complexity</div>
+              <div class="timeline-item-desc">UAE and KSA audiences behave differently — different search behaviour, different sensitivity to health messaging, different competitive landscape</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item-title">Bilingual Campaign Architecture</div>
+              <div class="timeline-item-desc">Required separate campaign sets in English and Arabic — creative, copy, and landing page alignment for both languages</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item-title">Two Product Categories</div>
+              <div class="timeline-item-desc">Supplements and test kits have different funnel depths — supplements are repeat purchases, test kits are single-event buys</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item-title">Channel Fragmentation</div>
+              <div class="timeline-item-desc">Sales split between Google Ads direct, Amazon.ae, and noon UAE — attribution required careful UTM architecture across platforms</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- My Role -->
+        <div>
+          <div class="cs-section-label">Approach</div>
+          <div class="cs-section-title">30+ campaigns, 2 markets, full-funnel build</div>
+          <div class="cs-text">
+            Built and managed a full campaign architecture covering Performance Max, Search, and Shopping — split by market (UAE/KSA), language (EN/AR), and product line (supplements/test kits). Ran continuous A/B testing on creative and copy with quarterly refresh cycles.
+          </div>
+          <div class="timeline" style="margin-top:1.5rem;">
+            <div class="timeline-item">
+              <div class="timeline-item-title">PMax Sales Campaigns (EN + AR)</div>
+              <div class="timeline-item-desc">Built separate PMax asset groups per language with localised headlines, images, and audience signals for each market</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item-title">Search Campaigns — Fertility & Hormones</div>
+              <div class="timeline-item-desc">Intent-based search campaigns targeting high-value queries around AMH testing, fertility supplements, and hormone health</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item-title">Shopping & PMax Feed-Only</div>
+              <div class="timeline-item-desc">Product feed campaigns for supplements and test kits — optimised product titles, descriptions, and pricing for UAE market</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item-title">KSA Expansion</div>
+              <div class="timeline-item-desc">Launched dedicated Saudi campaigns: Hormone Test, Fertility Test, AMH Test — both EN and AR — to tap a high-intent GCC market</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="cs-results">
+          <div class="cs-section-label">Results — Q3 2025 Peak Performance · Verified from Google Ads API #5873928531</div>
+          <div class="cs-section-title">Best quarter: July–September 2025</div>
+          <div class="results-grid">
+            <div class="result-card down">
+              <div class="result-value">$23.19</div>
+              <div class="result-label">Cost per Conversion</div>
+              <div class="result-change">↓ Q3 2025 — best CPA in account history</div>
+            </div>
+            <div class="result-card up">
+              <div class="result-value" style="font-size:1.6rem;">382</div>
+              <div class="result-label">Conversions in One Quarter</div>
+              <div class="result-change">↑ Jul–Sep 2025 across UAE + KSA</div>
+            </div>
+            <div class="result-card up">
+              <div class="result-value">$8.8K</div>
+              <div class="result-label">Spend That Quarter</div>
+              <div class="result-change">↑ efficient budget across 2 markets</div>
+            </div>
+            <div class="result-card up">
+              <div class="result-value">4.28%</div>
+              <div class="result-label">CTR (Q3 2025)</div>
+              <div class="result-change">↑ strong creative relevance score</div>
+            </div>
+            <div class="result-card up">
+              <div class="result-value">30+</div>
+              <div class="result-label">Campaigns Built & Managed</div>
+              <div class="result-change">↑ PMax, Search, Shopping across 2 markets</div>
+            </div>
+            <div class="result-card up">
+              <div class="result-value">2</div>
+              <div class="result-label">Markets Managed (UAE + KSA)</div>
+              <div class="result-change">↑ bilingual — English & Arabic creative</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /cs-body -->
+    </div><!-- /cs-wrapper -->
+  </div>
+</section>
+
+<!-- ── Skills ── -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-tag fade-in">Capabilities</p>
+    <h2 class="section-title fade-in">Skills & Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">🎯 Paid Advertising</div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Google Ads (PMax)</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Meta Ads (FB/IG)</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Amazon Sponsored Ads</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Google Search / Display</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">🎨 Creative & Design</div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Canva (Pro)</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Video Editing</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Ad Creative Strategy</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Brand Identity</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <div class="skill-group-title">📊 Analytics & Tools</div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Google Analytics 4</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Google Tag Manager</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">PowerPoint Reporting</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:94%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">UTM & Conversion Tracking</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Testimonial ── -->
+<section id="testimonial">
+  <div class="section-inner">
+    <p class="section-tag fade-in">Testimonial</p>
+    <h2 class="section-title fade-in">What clients say</h2>
+    <div class="testimonial-inner fade-in">
+      <div class="quote-icon">💬</div>
+      <div class="quote-text">
+        "Keroles completely transformed how we approach Google Ads. He didn't just set up campaigns — he fixed our tracking, built a real creative strategy, and showed up every week with clear data and a plan. Our cost per booking dropped dramatically within 3 months. He's the kind of marketer who takes real ownership."
+      </div>
+      <div class="quote-author">
+        <div class="quote-avatar">O</div>
+        <div>
+          <div class="quote-name">Ogaei Leadership Team</div>
+          <div class="quote-role">Ontario Virtual Healthcare Clinic, Canada</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact ── -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <p class="section-tag fade-in" style="text-align:center;">Get in Touch</p>
+      <h2 class="section-title fade-in" style="text-align:center;">Ready to grow?</h2>
+      <div class="contact-card fade-in">
+        <div class="contact-glow"></div>
+        <h3>Let's build something that works</h3>
+        <p>Whether you need Google Ads management, creative production, or a full digital strategy — I'd love to hear about your project.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:keroles.mousa@icloud.com">
+            <span>✉️</span> keroles.mousa@icloud.com
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/keroles-mousa/" target="_blank">
+            <span>💼</span> linkedin.com/in/keroles-mousa
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Keroles Mousa · Google Ads & Creative Specialist · Kraków, Poland</p>
+</footer>
+
+<script>
+  // Scroll-triggered fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
